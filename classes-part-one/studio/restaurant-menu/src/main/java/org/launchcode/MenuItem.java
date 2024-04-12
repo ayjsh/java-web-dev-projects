@@ -7,6 +7,7 @@ public class MenuItem {
     private double price;
     private String description;
     private String category;
+    private String newOld;
     private final LocalDate dateAdded;
 
     public menuItem(String name, double price, String description, String category) {
@@ -14,6 +15,7 @@ public class MenuItem {
         this.price = price;
         this.description = description;
         this.category = category;
+        this.newOld = "";
         this.dateAdded = LocalDate.now();
     }
 
