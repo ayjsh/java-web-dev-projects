@@ -1,32 +1,49 @@
 package org.launchcode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class Menu {
-    private Date lastUpdated;
-    private ArrayList<MenuItem> items;
-
-    public Menu(Date d, ArrayList<MenuItem> i) {
-        this.lastUpdated = d;
-        this.items = i;
+public class menu {
+    private final ArrayList<menuItem> menuItems = new ArrayList<>();;
+    private LocalDate lastUpdated;
+    //Allow for default constructor
+    public void addItem(MenuItem item) {
+        for (MenuItem food : this.menuList) {
+            if (food.getName() == item.getName()) {
+                System.out.println(item.getName() + " is already on the menu!");
+                return;
+            }
+        }
+        System.out.println("adding " + item.getName() + " to the menu");
+        this.menuList.add(item);
+        this.date = setDate();
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void removeItem(MenuItem item) {
+        System.out.println("removing " + item.getName() + " to the menu");
+        this.menuList.remove(this.menuList.indexOf(item));
     }
 
-    public void setItems(ArrayList<MenuItem> items) {
-        this.items = items;
+    public ArrayList<menuItem> getMenuItems() {
+        return menuItems;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    private String setDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        return formatter.format(date);
     }
 
-    public ArrayList<MenuItem> getItems() {
-        return items;
+    public void setNewOld(String aNewOld) {
+        this.newOld = aNewOld;
+    }
+    public void setNew() {
+        int length = this.menuList.size();
+        this.menuList.get(length - 1).setNewOld("New");
+    }
+
+    public Boolean equals(MenuItem item) {
+        if (this.name == item.name) ;
+        return true;
     }
 }
-
-
